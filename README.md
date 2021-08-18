@@ -4,7 +4,7 @@
 
 ## Instructions
 
-Use ```\belugamaketitle``` to invoke the title environment. If no options are specified when importing the package, ```\belugamaketitle``` automatically falls back to ```\maketitle```.
+Use ```\belugamaketitle``` to invoke the title environment[^1]. If no options are specified when importing the package, ```\belugamaketitle``` automatically falls back to ```\maketitle```.
 
 The options support the following title elements:
 
@@ -19,3 +19,5 @@ Note that if ```\shorttitle``` is left undefined by the user, then it automatica
 ## Note on the Name
 
 The inspiration behind the name are Belugas (Delphinapterus leucas), also known as white whales, sea canary or melonhead, however, it has no connection to the actual contents of the style. It just sounds cool. As you might have guessed I might have a slight obsession with whales.
+
+[^1]: Overriding ```maketitle``` fails for me, and this is the best I could think of.
