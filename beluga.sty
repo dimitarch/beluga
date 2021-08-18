@@ -9,14 +9,20 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{beluga}[The Beluga Style]
 
-% General Layout
+%-------------------------------------------------------------------------------
+%   General Layout
+%-------------------------------------------------------------------------------
 \newcommand{\belugawidth}{5.1in} % Page width
 \newcommand{\belugaheight}{8in} % Page height
 
 \RequirePackage{geometry}
 \geometry{letterpaper, total={\belugawidth, \belugaheight}}
 
-% Handle pdfLatex and UTF-8 based encoding
+%-------------------------------------------------------------------------------
+%   Handle pdfLatex and UTF-8 based encoding
+%-------------------------------------------------------------------------------
+\RequirePackage{ifxetex}
+
 \ifxetex
     \RequirePackage{fontspec}
 \else
@@ -27,7 +33,9 @@
     \fi
 \fi
 
-% Typography
+%-------------------------------------------------------------------------------
+%   Typography
+%-------------------------------------------------------------------------------
 \RequirePackage[T1]{fontenc}
 \RequirePackage[english]{babel}
 \usepackage{lmodern} % Latin Modern font
@@ -35,40 +43,64 @@
 \RequirePackage{textcomp}
 \RequirePackage{microtype}
 
-% Custom header and footer
-\RequirePackage{fancyhdr}
-\setlength{\headheight}{32pt}
-
-% Body Text Formatting
+%   Body Text Formatting
 \RequirePackage{setspace} % Line space
 \setstretch{1.2} % Line spacing
 \setlength{\parindent}{0.85cm} % Indentation
 \interfootnotelinepenalty=10000 % Footline penalty
 
-% Redefine \maketitle
+%   Set good margin for display items
+\setlength\abovedisplayskip{3pt}
+\setlength\belowdisplayskip{3pt}
+\setlength\abovedisplayshortskip{3pt}
+\setlength\belowdisplayshortskip{3pt}
+
+%-------------------------------------------------------------------------------
+%   Custom header and footer
+%-------------------------------------------------------------------------------
+\RequirePackage{fancyhdr}
+\setlength{\headheight}{32pt}
+
+%-------------------------------------------------------------------------------
+%   Title elements
+%-------------------------------------------------------------------------------
+%   Redefine \maketitle
 \newcommand{\belugamaketitle}{\maketitle}
 
-% Options: homework, lecture, paper
+%   Course
+\newcommand{\@course}{}
+\newcommand{\course}[1]{\renewcommand{\@course}{#1}}
+\newcommand{\thecourse}{\@course}
 
-% Homework
+%   Semester
+\newcommand{\@semester}{}
+\newcommand{\semester}[1]{\renewcommand{\@semester}{#1}}
+\newcommand{\thesemester}{\@semester}
+
+%   Lecturer
+\newcommand{\@lecturer}{}
+\newcommand{\lecturer}[1]{\renewcommand{\@lecturer}{#1}}
+\newcommand{\thelecturer}{\@lecturer}
+
+%   Email
+\newcommand{\@email}{}
+\newcommand{\email}[1]{\renewcommand{\@email}{#1}}
+
+%   Affiliation
+\newcommand{\@affiliation}{}
+\newcommand{\affiliation}[1]{\renewcommand{\@affiliation}{#1}}
+
+%   Short title
+\newcommand{\@shorttitle}{\@title}
+\newcommand{\shorttitle}[1]{\renewcommand{\@shorttitle}{#1}}
+\newcommand{\theshorttitle}{\@shorttitle}
+
+%-------------------------------------------------------------------------------
+%   Class options: homework, lecture, paper
+%-------------------------------------------------------------------------------
+%   Homework
 \DeclareOption{homework}{
-
-    % Short title
-    \newcommand{\@shorttitle}{\@title}
-    \newcommand{\shorttitle}[1]{\renewcommand{\@shorttitle}{#1}}
-    \newcommand{\theshorttitle}{\@shorttitle}
-
-    % Course
-    \newcommand{\@course}{}
-    \newcommand{\course}[1]{\renewcommand{\@course}{#1}}
-    \newcommand{\thecourse}{\@course}
-
-    % Semester
-    \newcommand{\@semester}{}
-    \newcommand{\semester}[1]{\renewcommand{\@semester}{#1}}
-    \newcommand{\thesemester}{\@semester}
-
-    % Homework Title
+    %   Homework Title
     \renewcommand{\belugamaketitle}{
         \noindent
         \begin{center}
@@ -78,7 +110,7 @@
         \end{center}
     }
 
-    % Homework Header and Footer
+    %   Homework Header and Footer
     \pagestyle{fancy}
     \fancyhf{}
     \lhead{\@course \ \textbullet \ \@shorttitle}
@@ -86,30 +118,9 @@
     \cfoot{\thepage}
 } % end of homework
 
-% Lecture
+%   Lecture
 \DeclareOption{lecture}{
-
-    % Short title
-    \newcommand{\@shorttitle}{\@title}
-    \newcommand{\shorttitle}[1]{\renewcommand{\@shorttitle}{#1}}
-    \newcommand{\theshorttitle}{\@shorttitle}
-
-    % Course
-    \newcommand{\@course}{}
-    \newcommand{\course}[1]{\renewcommand{\@course}{#1}}
-    \newcommand{\thecourse}{\@course}
-
-    % Semester
-    \newcommand{\@semester}{}
-    \newcommand{\semester}[1]{\renewcommand{\@semester}{#1}}
-    \newcommand{\thesemester}{\@semester}
-
-    % Lecturer
-    \newcommand{\@lecturer}{}
-    \newcommand{\lecturer}[1]{\renewcommand{\@lecturer}{#1}}
-    \newcommand{\thelecturer}{\@lecturer}
-
-    % Lecture Title
+    %   Lecture Title
     \renewcommand{\belugamaketitle}{
         \noindent
         \begin{center}
@@ -121,7 +132,7 @@
         \end{center}
     }
 
-    % Lecture Header and Footer
+    %   Lecture Header and Footer
     \pagestyle{fancy}
     \fancyhf{}
     \lhead{\@course \ \textbullet \ \@shorttitle}
@@ -129,47 +140,38 @@
     \cfoot{\thepage}
 } % end of lecture
 
-
-% Paper
+%   Paper
 \DeclareOption{paper}{
-
-    % Email
-    \newcommand{\@email}{}
-    \newcommand{\email}[1]{\renewcommand{\@email}{#1}}
-
-    % Affiliation
-    \newcommand{\@affiliation}{}
-    \newcommand{\affiliation}[1]{\renewcommand{\@affiliation}{#1}}
-
-    % Short title
-    \newcommand{\@shorttitle}{\@title}
-    \newcommand{\shorttitle}[1]{\renewcommand{\@shorttitle}{#1}}
-    \newcommand{\theshorttitle}{\@shorttitle}
-
-    % Lecture title
-
+    %   Lecture title
     \renewcommand{\belugamaketitle}{
         \thispagestyle{plain}
         \noindent
         \begin{center}
             {\huge\@title}
-            \vspace{1em} \\
-            \textsc{\@author}
-            \vspace{0.5em} \\
-            \@affiliation
-            \vspace{0.5em} \\
+            \vspace{1em}\\
+            {\large\@author}\\
+            \@affiliation\\
             \texttt{\@email}
-            \vspace{1em} \\
+            \vspace{0.5em}\\
             \textbullet \textbullet \textbullet
         \end{center}
     }
 
-    % Lecture header and footer
+    %   Lecture header and footer
     \pagestyle{fancy}
     \fancyhf{}
     \lhead{\@shorttitle}
     \rhead{\leftmark}
     \cfoot{\thepage}
+
+    %   Redefine abstract
+    \renewenvironment{abstract}{
+        \centerline{\textbf{Abstract}}
+        \begin{quote}\begin{singlespace}
+    }
+    {
+        \end{singlespace}\end{quote}
+    }
 } % end of lecture
 
 \ProcessOptions\relax
