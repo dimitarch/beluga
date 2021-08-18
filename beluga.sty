@@ -83,11 +83,11 @@
 \newcommand{\thelecturer}{\@lecturer}
 
 %   Email
-\newcommand{\@email}{}
+\newcommand{\@email}{\ }
 \newcommand{\email}[1]{\renewcommand{\@email}{#1}}
 
 %   Affiliation
-\newcommand{\@affiliation}{}
+\newcommand{\@affiliation}{\ }
 \newcommand{\affiliation}[1]{\renewcommand{\@affiliation}{#1}}
 
 %   Short title
@@ -142,7 +142,7 @@
 
 %   Paper
 \DeclareOption{paper}{
-    %   Lecture title
+    %   Paper title
     \renewcommand{\belugamaketitle}{
         \thispagestyle{plain}
         \noindent
@@ -157,22 +157,13 @@
         \end{center}
     }
 
-    %   Lecture header and footer
+    %   Paper header and footer
     \pagestyle{fancy}
     \fancyhf{}
     \lhead{\@shorttitle}
     \rhead{\leftmark}
     \cfoot{\thepage}
-
-    %   Redefine abstract
-    \renewenvironment{abstract}{
-        \centerline{\textbf{Abstract}}
-        \begin{quote}\begin{singlespace}
-    }
-    {
-        \end{singlespace}\end{quote}
-    }
-} % end of lecture
+} % end of paper
 
 \ProcessOptions\relax
 
