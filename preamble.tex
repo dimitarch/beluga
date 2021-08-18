@@ -1,0 +1,89 @@
+% Referencing
+\usepackage[square, numbers]{natbib}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{titling}
+
+% Figures
+\usepackage{graphicx} % Images
+\usepackage{tabulary} % Tables
+\usepackage{booktabs}
+\usepackage{colortbl}
+
+% Math
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Math-related
+\usepackage{units}
+\usepackage{gensymb}
+\usepackage{mathrsfs}
+\usepackage{bm} % Bolding
+
+% Miscellaneous
+\usepackage{enumitem} % Enumeration
+\setlength\abovedisplayskip{3pt}
+\setlength\belowdisplayskip{3pt}
+\setlength\abovedisplayshortskip{3pt}
+\setlength\belowdisplayshortskip{3pt}
+
+% Math Symbols
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+
+\newcommand{\Tcal}{\mathcal{T}}
+
+\newcommand{\Pfr}{\mathfrak{P}}
+\newcommand{\Ffr}{\mathfrak{F}}
+
+\newcommand{\dzero}{\mathbf{0}}
+
+\newcommand{\dif}{\mathop{}\!\mathrm{d}} % Fancy differential
+
+% Operators
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\sn}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\intr}{int}
+\DeclareMathOperator{\clo}{clo}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\ord}{ord}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{fact}{Fact}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{hypothesis}{Hypothesis}
+\newtheorem{case}{Case}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{example}{Example}
+
+\theoremstyle{remark}
+\newtheorem{solution}{Solution}
+\newtheorem*{remark}{Remark}
+
+% Programming
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage[noend]{algpseudocode}
+\usepackage{cases}
+
+% Programming
+\lstset{
+    language=C++,
+    frame=tb, % Draw a frame at the top and bottom of the code block
+    tabsize=4, % Tab width
+    showstringspaces=false, % Don't mark spaces in strings
+}

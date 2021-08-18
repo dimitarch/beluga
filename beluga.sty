@@ -1,0 +1,175 @@
+% This is beluga.sty -- an experimental style for LaTeX documents, developed by % Dimitar Chakarov. It includes a default print layout, with options for
+% homework, lecture and paper heads.
+
+% The inspiration behind the name are Belugas (Delphinapterus leucas), also
+% known as white whales, sea canary or melonhead. As you might have guessed I
+% might have a slight obsession with whales.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beluga}[The Beluga Style]
+
+% General Layout
+\newcommand{\belugawidth}{5.1in} % Page width
+\newcommand{\belugaheight}{8in} % Page height
+
+\RequirePackage{geometry}
+\geometry{letterpaper, total={\belugawidth, \belugaheight}}
+
+% Handle pdfLatex and UTF-8 based encoding
+\ifxetex
+    \RequirePackage{fontspec}
+\else
+    \ifluatex
+        \RequirePackage{fontspec}
+    \else
+    \RequirePackage[utf8]{inputenc}
+    \fi
+\fi
+
+% Typography
+\RequirePackage[T1]{fontenc}
+\RequirePackage[english]{babel}
+\usepackage{lmodern} % Latin Modern font
+
+\RequirePackage{textcomp}
+\RequirePackage{microtype}
+
+% Custom header and footer
+\RequirePackage{fancyhdr}
+\setlength{\headheight}{32pt}
+
+% Body Text Formatting
+\RequirePackage{setspace} % Line space
+\setstretch{1.2} % Line spacing
+\setlength{\parindent}{0.85cm} % Indentation
+\interfootnotelinepenalty=10000 % Footline penalty
+
+% Redefine \maketitle
+\newcommand{\makehead}{\maketitle}
+
+% Options: homework, lecture, paper
+
+% Homework
+\DeclareOption{homework}{
+
+    % Short title
+    \newcommand{\@shorttitle}{\@title}
+    \newcommand{\shorttitle}[1]{\renewcommand{\@shorttitle}{#1}}
+    \newcommand{\theshorttitle}{\@shorttitle}
+
+    % Course
+    \newcommand{\@course}{course}
+    \newcommand{\course}[1]{\renewcommand{\@course}{#1}}
+    \newcommand{\thecourse}{\@course}
+
+    % Semester
+    \newcommand{\@semester}{semester}
+    \newcommand{\semester}[1]{\renewcommand{\@semester}{#1}}
+    \newcommand{\thesemester}{\@semester}
+
+    % Homework Title
+    \renewcommand{\makehead}{
+        \noindent
+        \begin{center}
+            {\LARGE\textsc{\@title}}
+            \vspace{1em} \\
+            \textbullet \textbullet \textbullet
+        \end{center}
+    }
+
+    % Homework Header and Footer
+    \pagestyle{fancy}
+    \fancyhf{}
+    \lhead{\@course \ \textbullet \ \@shorttitle}
+    \rhead{\textit{\@author}}
+    \cfoot{\thepage}
+} % end of homework
+
+% Lecture
+\DeclareOption{lecture}{
+
+    % Short title
+    \newcommand{\@shorttitle}{\@title}
+    \newcommand{\shorttitle}[1]{\renewcommand{\@shorttitle}{#1}}
+    \newcommand{\theshorttitle}{\@shorttitle}
+
+    % Course
+    \newcommand{\@course}{course}
+    \newcommand{\course}[1]{\renewcommand{\@course}{#1}}
+    \newcommand{\thecourse}{\@course}
+
+    % Semester
+    \newcommand{\@semester}{semester}
+    \newcommand{\semester}[1]{\renewcommand{\@semester}{#1}}
+    \newcommand{\thesemester}{\@semester}
+
+    % Lecturer
+    \newcommand{\@lecturer}{lecturer}
+    \newcommand{\lecturer}[1]{\renewcommand{\@lecturer}{#1}}
+    \newcommand{\thelecturer}{\@lecturer}
+
+    % Lecture Title
+    \renewcommand{\makehead}{
+        \noindent
+        \begin{center}
+            {\LARGE\textsc{\@title}}
+            \vspace{1em}\\
+            \hbox to \belugawidth { {\it \hfill Notes by \@author} }
+            \vspace{0.5em}
+            \textbullet \textbullet \textbullet
+        \end{center}
+    }
+
+    % Lecture Header and Footer
+    \pagestyle{fancy}
+    \fancyhf{}
+    \lhead{\@course \ \textbullet \ \@shorttitle}
+    \rhead{\textit{\@lecturer}}
+    \cfoot{\thepage}
+} % end of lecture
+
+
+% Paper
+\DeclareOption{paper}{
+
+    % Email
+    \newcommand{\@email}{Extra information}
+    \newcommand{\email}[1]{\renewcommand{\@email}{#1}}
+
+    % Affiliation
+    \newcommand{\@affiliation}{Institution}
+    \newcommand{\affiliation}[1]{\renewcommand{\@affiliation}{#1}}
+
+    % Short title
+    \newcommand{\@shorttitle}{\@title}
+    \newcommand{\shorttitle}[1]{\renewcommand{\@shorttitle}{#1}}
+    \newcommand{\theshorttitle}{\@shorttitle}
+
+    % Lecture title
+    \renewcommand{\makehead}{
+        \thispagestyle{plain}
+        \noindent
+        \begin{center}
+            {\LARGE\@title}
+            \vspace{1em} \\
+            \textsc{\@author}
+            \vspace{0.5em} \\
+            \@affiliation
+            \vspace{0.5em} \\
+            \texttt{\@email}
+            \vspace{1em} \\
+            \textbullet \textbullet \textbullet
+        \end{center}
+    }
+
+    % Lecture header and footer
+    \pagestyle{fancy}
+    \fancyhf{}
+    \lhead{\@shorttitle}
+    \rhead{\leftmark}
+    \cfoot{\thepage}
+} % end of lecture
+
+\ProcessOptions\relax
+
+\endinput
