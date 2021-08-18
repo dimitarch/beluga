@@ -45,7 +45,7 @@
 \interfootnotelinepenalty=10000 % Footline penalty
 
 % Redefine \maketitle
-\newcommand{\makehead}{\maketitle}
+\newcommand{\belugamaketitle}{\maketitle}
 
 % Options: homework, lecture, paper
 
@@ -58,17 +58,17 @@
     \newcommand{\theshorttitle}{\@shorttitle}
 
     % Course
-    \newcommand{\@course}{course}
+    \newcommand{\@course}{}
     \newcommand{\course}[1]{\renewcommand{\@course}{#1}}
     \newcommand{\thecourse}{\@course}
 
     % Semester
-    \newcommand{\@semester}{semester}
+    \newcommand{\@semester}{}
     \newcommand{\semester}[1]{\renewcommand{\@semester}{#1}}
     \newcommand{\thesemester}{\@semester}
 
     % Homework Title
-    \renewcommand{\makehead}{
+    \renewcommand{\belugamaketitle}{
         \noindent
         \begin{center}
             {\LARGE\textsc{\@title}}
@@ -94,22 +94,22 @@
     \newcommand{\theshorttitle}{\@shorttitle}
 
     % Course
-    \newcommand{\@course}{course}
+    \newcommand{\@course}{}
     \newcommand{\course}[1]{\renewcommand{\@course}{#1}}
     \newcommand{\thecourse}{\@course}
 
     % Semester
-    \newcommand{\@semester}{semester}
+    \newcommand{\@semester}{}
     \newcommand{\semester}[1]{\renewcommand{\@semester}{#1}}
     \newcommand{\thesemester}{\@semester}
 
     % Lecturer
-    \newcommand{\@lecturer}{lecturer}
+    \newcommand{\@lecturer}{}
     \newcommand{\lecturer}[1]{\renewcommand{\@lecturer}{#1}}
     \newcommand{\thelecturer}{\@lecturer}
 
     % Lecture Title
-    \renewcommand{\makehead}{
+    \renewcommand{\belugamaketitle}{
         \noindent
         \begin{center}
             {\LARGE\textsc{\@title}}
@@ -133,11 +133,11 @@
 \DeclareOption{paper}{
 
     % Email
-    \newcommand{\@email}{Extra information}
+    \newcommand{\@email}{}
     \newcommand{\email}[1]{\renewcommand{\@email}{#1}}
 
     % Affiliation
-    \newcommand{\@affiliation}{Institution}
+    \newcommand{\@affiliation}{}
     \newcommand{\affiliation}[1]{\renewcommand{\@affiliation}{#1}}
 
     % Short title
@@ -146,7 +146,8 @@
     \newcommand{\theshorttitle}{\@shorttitle}
 
     % Lecture title
-    \renewcommand{\makehead}{
+
+    \renewcommand{\belugamaketitle}{
         \thispagestyle{plain}
         \noindent
         \begin{center}
