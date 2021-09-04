@@ -23,7 +23,8 @@
 \usepackage{bm} % Bolding
 
 % Miscellaneous
-\usepackage{enumitem} % Enumeration
+\usepackage[shortlabels]{enumitem} % Enumeration
+\setlist[enumerate]{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
 
 % Set good margin for display items
 \setlength\abovedisplayskip{3pt}
@@ -70,6 +71,13 @@
 \newtheorem{definition}{Definition}
 \newtheorem{problem}{Problem}
 \newtheorem*{example}{Example}
+
+% For homework with strange numbering.
+\newtheorem{problemalt}{Problem}
+\newenvironment{pp}[1]{
+    renewcommand\theproblemalt{#1}
+    \problemalt
+}{\endproblemalt}
 
 \theoremstyle{remark}
 \newtheorem{solution}{Solution}
