@@ -12,7 +12,7 @@
 %-------------------------------------------------------------------------------
 %   General Layout
 %-------------------------------------------------------------------------------
-\newcommand{\belugawidth}{5.1in} % Page width
+\newcommand{\belugawidth}{5.2in} % Page width
 \newcommand{\belugaheight}{8in} % Page height
 
 \RequirePackage{geometry}
@@ -43,10 +43,14 @@
 \RequirePackage{textcomp}
 \RequirePackage{microtype}
 
-%   Body Text Formatting
-\RequirePackage{setspace} % Line space
-\setstretch{1.2} % Line spacing
-\setlength{\parindent}{0.85cm} % Indentation
+% Line spacing
+\RequirePackage{setspace}
+\setstretch{1.2}
+
+% Identation
+\RequirePackage{indentfirst}
+\setlength{\parindent}{0.85cm}
+
 \interfootnotelinepenalty=10000 % Footline penalty
 
 %   Set good margin for display items
@@ -104,9 +108,7 @@
     \renewcommand{\belugamaketitle}{
         \noindent
         \begin{center}
-            {\LARGE\textsc{\@title}}
-            \vspace{1em} \\
-            \textbullet \textbullet \textbullet
+            {\huge \@title}
         \end{center}
     }
 
@@ -124,11 +126,7 @@
     \renewcommand{\belugamaketitle}{
         \noindent
         \begin{center}
-            {\LARGE\textsc{\@title}}
-            \vspace{1em}\\
-            \hbox to \belugawidth { {\it \hfill Notes by \@author} }
-            \vspace{0.5em}
-            \textbullet \textbullet \textbullet
+            {\huge \@title}
         \end{center}
     }
 
@@ -152,8 +150,6 @@
             {\large\@author}\\
             \@affiliation\\
             \texttt{\@email}
-            \vspace{0.5em}\\
-            \textbullet \textbullet \textbullet
         \end{center}
     }
 

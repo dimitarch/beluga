@@ -23,8 +23,10 @@
 \usepackage{bm} % Bolding
 
 % Miscellaneous
+\usepackage{indentfirst}
 \usepackage[shortlabels]{enumitem} % Enumeration
 \setlist[enumerate]{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+\setlist[itemize]{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
 
 % Set good margin for display items
 \setlength\abovedisplayskip{3pt}
@@ -62,20 +64,22 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{proposition}{Proposition}
 \newtheorem{corollary}{Corollary}
+\newtheorem{claim}{Claim}
 \newtheorem{fact}{Fact}
 \newtheorem{conjecture}{Conjecture}
 \newtheorem{hypothesis}{Hypothesis}
-\newtheorem{case}{Case}
+\newtheorem{observation}{Observation}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 \newtheorem{problem}{Problem}
 \newtheorem*{example}{Example}
+\newtheorem{case}{Case}
 
 % For homework with strange numbering.
 \newtheorem{problemalt}{Problem}
-\newenvironment{pp}[1]{
-    renewcommand\theproblemalt{#1}
+\newenvironment{customproblem}[1]{
+    \renewcommand\theproblemalt{#1}
     \problemalt
 }{\endproblemalt}
 
