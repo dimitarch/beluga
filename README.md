@@ -14,8 +14,4 @@ The options support the following title elements:
 | Lecture | ```\title```, ```\author```, ```\lecturer```, ```\course```, ```\semester```, ```\shorttitle``` |
 | Paper | ```\title```, ```\author```, ```\affiliation```, ```\email``` |
 
-*Remark:* If left undefined, ```\shorttitle``` automatically falls back to ```\title```.
-
-## Note on the Name
-
-The inspiration behind the name are Belugas (Delphinapterus leucas), also known as white whales, sea canary or melonhead, however, it has no connection to the actual contents of the style. It just sounds cool! As you might have guessed I might have a slight obsession with whales.
+*Remark:* If left undefined, ```\shorttitle``` automatically falls back to ```\title```. Also ```\title``` and ```\author``` always need to be specified, even if left blank.
